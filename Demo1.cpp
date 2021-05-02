@@ -31,7 +31,7 @@ int main() {
   player.take_card(City::Johannesburg)
       .take_card(City::Khartoum)
       .take_card(City::SaoPaulo)
-      .take_card(City::BuenosAires)
+      .take_card (City::BuenosAires)
       .take_card(City::HoChiMinhCity);
 
   /* build action */
