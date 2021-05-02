@@ -1,27 +1,23 @@
+//*Nothing here works.
 #include "Player.hpp"
 #include <stdexcept>
 using namespace std;
-using namespace pandemic;
-bool Player::hasCard(City city) {
-  if (cards.count(city)) {
-    return true;
-  }
-  return false;
-}
+namespace pandemic {
+bool Player::hasCard(City city) { return (cards.count(city) != 0); }
 Player &Player::drive(City city) {
   if (!hasCard(city)) {
-    throw invalid_argument{"TODO!!!!!!!!!!!"};
+    return *this;
   }
-  if (board.isConnected(currentLoc, city)) {
+  if (Board::isConnected(currentLoc, city)) {
     cards.erase(city);
     currentLoc = city;
     return *this;
   }
-  throw invalid_argument{"TODO!!!!!!!!!!!"};
+  return *this;
 }
 Player &Player::fly_direct(City city) {
   if (!hasCard(city)) {
-    throw invalid_argument{"TODO!!!!!!!!!!!"};
+    return *this;
   }
   currentLoc = city;
   cards.erase(city);
@@ -29,30 +25,30 @@ Player &Player::fly_direct(City city) {
 }
 Player &Player::fly_charter(City city) {
   if (!hasCard(city)) {
-    throw invalid_argument{"TODO!!!!!!!!!!!"};
+    return *this;
   }
   if (hasCard(currentLoc)) {
     currentLoc = city;
     cards.erase(currentLoc);
     return *this;
   }
-  throw invalid_argument{"TODO!!!!!!!!!!!"};
+  return *this;
 }
 Player &Player::fly_shuttle(City city) {
-  if (board.labExists(currentLoc)) {
-    if (board.labExists(city)) {
+  if (Board::labExists(currentLoc)) {
+    if (Board::labExists(city)) {
       cards.erase(currentLoc);
       return *this;
     }
-    throw invalid_argument{"TODO!!!!!!!!!!!"};
-  }
-  throw invalid_argument{"TODO!!!!!!!!!!!"};
-}
-Player &Player::build() {
-  if (board.labExists(currentLoc)) {
     return *this;
   }
-  board.makeLab(currentLoc);
+  return *this;
+}
+Player &Player::build() {
+  if (Board::labExists(currentLoc)) {
+    return *this;
+  }
+  Board::makeLab(currentLoc);
   return *this;
 }
 Player &Player::discover_cure(Color color) {
@@ -67,3 +63,4 @@ Player &Player::take_card(City city) {
   //*TODO.
   return *this;
 }
+} // namespace pandemic

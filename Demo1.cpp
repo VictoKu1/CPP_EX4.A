@@ -31,7 +31,7 @@ int main() {
   player.take_card(City::Johannesburg)
       .take_card(City::Khartoum)
       .take_card(City::SaoPaulo)
-      .take_card (City::BuenosAires)
+      .take_card(City::BuenosAires)
       .take_card(City::HoChiMinhCity);
 
   /* build action */
@@ -180,5 +180,3 @@ int main() {
        << endl; // prints "1" - the board is clean - congratulations!!! You
                 // treated all diseases!!!
 }
-
-

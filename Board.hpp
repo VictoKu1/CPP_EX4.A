@@ -1,9 +1,11 @@
 #pragma once
 #include "City.hpp"
 #include "Color.hpp"
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <set>
+#include <sstream>
 #include <string>
 using namespace std;
 namespace pandemic {
@@ -13,9 +15,10 @@ public:
   bool laboratoryEx;
   Color color;
   int numOfCubes;
+  int originalCubeNum;
   Location() {}
-  Location(set<City> &connections, Color color)
-      : connections(connections), color(color) {
+  Location(Color color, set<City> connections)
+      : color{color}, connections{connections} {
     laboratoryEx = false;
     numOfCubes = 0;
   }
@@ -27,10 +30,11 @@ class Board {
 public:
   Board() {} //*TODO: Mannualy add all the connections .
   int &operator[](City c);
-  friend ostream &operator<<(ostream &os, Board &board);
-  bool is_clean();
-  bool isConnected(City from, City to);
-  bool labExists(City city);
-  void makeLab(City city);
+  friend ostream &operator<<(ostream &os, const Board &board);
+  static bool is_clean();
+  static bool isConnected(City from, City to);
+  static bool labExists(City city);
+  static void makeLab(City city);
+  static void remove_cures();
 };
 } // namespace pandemic
