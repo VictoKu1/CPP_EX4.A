@@ -14,7 +14,8 @@ protected:
   set<City> cards;
   City currentLoc;
 public:
-  Player(Board &board,City currentLoc):board(board),currentLoc(currentLoc){};
+  Player(Board &board,City currentLoc):board(board),currentLoc(currentLoc){}
+  virtual~Player(){}
   Player& drive(City city);
   virtual Player& fly_direct(City city); //* For special dispatcher implementation .  
   Player& fly_charter(City city);

@@ -15,6 +15,7 @@ private:
 
 public:
   Scientist(Board &board, City city, int n) : Player(board, city), n(n) {}
+  ~Scientist() {}
   Player &discover_cure(Color color) override;
   string role() override;
 };

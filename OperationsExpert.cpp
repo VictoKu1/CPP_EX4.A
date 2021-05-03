@@ -5,5 +5,5 @@ Player &OperationsExpert::build() {
   //*TODO.
   return *this;
 }
-string OperationsExpert::role() { return "OperationExpert"; }
+string OperationsExpert::role() { return "OperationsExpert"; }
 } // namespace pandemic

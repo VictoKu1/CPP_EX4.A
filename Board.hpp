@@ -16,9 +16,15 @@ public:
   Color color;
   int numOfCubes;
   int originalCubeNum;
-  Location() {}
-  Location(Color color, set<City> connections)
-      : color{color}, connections{connections} {
+  Location() {
+    connections = {};
+    color = Blue;
+    laboratoryEx = false;
+    numOfCubes = 0;
+    originalCubeNum = 0;
+  }
+  Location(Color color, set<City>connections)
+      : color{color}, connections{move(connections)} {
     laboratoryEx = false;
     numOfCubes = 0;
   }
@@ -29,6 +35,7 @@ class Board {
 
 public:
   Board() {} //*TODO: Mannualy add all the connections .
+  ~Board(){}
   int &operator[](City c);
   friend ostream &operator<<(ostream &os, const Board &board);
   static bool is_clean();
