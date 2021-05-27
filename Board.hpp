@@ -45,3 +45,5 @@ public:
   static void remove_cures();
 };
 } // namespace pandemic
+
+
